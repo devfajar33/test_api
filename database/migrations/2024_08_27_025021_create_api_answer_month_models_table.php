@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('api_detail_models', function (Blueprint $table) {
+        Schema::create('api_answer_month_models', function (Blueprint $table) {
             $table->string('id', 30)->primary();
+            $table->string('value', 40)->nullable();
             $table->string('parent_id', 30);
-            $table->string('label', 200);
-            $table->string('type', 20)->nullable();   
-            $table->string('sub_type', 10)->nullable();
-            $table->string('orm_only', 5)->nullable();
-            $table->text('description')->nullable();
+            $table->string('label', 200)->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('api_detail_models');
+        Schema::dropIfExists('api_answer_month_models');
     }
 };
