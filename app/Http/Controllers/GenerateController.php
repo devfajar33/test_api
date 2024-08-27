@@ -19,7 +19,7 @@ use App\Models\ApiStatusLossModel;
 use App\Models\ApiTotalLossModel;
 use DB;
 
-class ApiController extends Controller
+class GenerateController extends Controller
 {
     public function index(Request $request)
     {
