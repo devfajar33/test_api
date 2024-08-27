@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\File;
 use App\Models\ApiModel;
 use App\Models\ApiDetailModel;
 use App\Models\ApiAnswerMonthModel;
@@ -20,12 +21,21 @@ use DB;
 
 class ApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $response = Http::get('https://museumkaa.iheritage-virtual.id/json/submission.json');           
+        $param = '0';
+        $data = ApiModel::get();
+        return view('show', compact('data', 'param'));
+    }
+
+    public function store()
+    {
+        $contents = File::get(base_path('public/submission.json'));
+        $response = json_decode(json: $contents, associative: true);  
+
         if($response)
         {
-            foreach($response->collect() as $item)
+            foreach($response as $item)
             {
                 if(ApiModel::where('name', $item['name'])->get()->count() == 0)
                 {
@@ -213,9 +223,8 @@ class ApiController extends Controller
                 }
             }
         }
-        $param = '0';
-        $data = ApiModel::get();
-        return view('show', compact('data', 'param'));
+        
+        return redirect()->route('api.index');
     }
 
     public function detail($id)

@@ -16,5 +16,6 @@ use App\Http\Controllers\ApiController;
 
 Route::group(['middleware' => 'web'], function () {
     Route::get('/', [ApiController::class, 'index'])->name('api.index');
+    Route::get('/store', [ApiController::class, 'store'])->name('store');
     Route::get('/api/detail/{param}', [ApiController::class, 'detail'])->name('api.detail');
 });

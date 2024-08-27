@@ -11,6 +11,7 @@
         <div class="row">
             <h2 class="m-3">Menampilkan Data</h2>
             <div class="col-lg-6">
+                <a href="{{ route('store') }}" class="btn btn-success btn-sm col-lg-2 m-3">Generate</a>
                 <table class="m-3 table">
                     <thead>
                         <tr>
@@ -34,7 +35,7 @@
                 </table>
             </div>
             <div class="col-lg-6">
-                <div class="m-3">
+                <div class="m-3 mt-5">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">  
